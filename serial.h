@@ -1,3 +1,5 @@
+#ifndef SERIAL_H
+#define SERIAL_H
 
 typedef unsigned char uint8_t;
 typedef long int int32_t;
@@ -75,3 +77,5 @@ union combuffer
 	struct status_ status;
 	struct synchro_ synchro;
 };
+
+#endif // SERIAL_H

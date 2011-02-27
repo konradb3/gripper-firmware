@@ -16,7 +16,7 @@
 _FOSC(FCKSM_CSECME & OSCIOFNC_ON & POSCMD_NONE & IOL1WAY_OFF);
 _FWDT(FWDTEN_OFF);
 
-void initIO() {
+void initIO(void) {
     _TRISA2 = 0;
     _ODCA2 = 0;
     _RA2 = 0;
@@ -69,7 +69,7 @@ void initIO() {
 // Initialize device PLL
 //
 
-void initClock() {
+void initClock(void) {
     PLLFBD = 41; // M = 43
     CLKDIVbits.PLLPOST = 0; // N1 = 2
     CLKDIVbits.PLLPRE = 0; // N2 = 2

@@ -42,7 +42,7 @@ void __attribute__((interrupt, no_auto_psv)) _QEI2Interrupt(void) {
 // QEI hardware initialization.
 //
 
-void initQEI() {
+void initQEI(void) {
     QEI1CONbits.POSRES = 0;
     QEI1CONbits.PCDOUT = 0;
     QEI1CONbits.SWPAB = 0;

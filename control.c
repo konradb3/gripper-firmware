@@ -8,6 +8,10 @@
 #include "spi.h"
 #include "config.h"
 
+////////////////////////////////////////////////////////////////////////////////
+// Module local variables.
+//
+
 /** Arrays used in controler 1 **/
 fractional abcCoefficient1[3] __attribute__((section(".xbss, bss, xmemory")));
 fractional controlHistory1[3] __attribute__((section(".ybss, bss, ymemory")));
@@ -22,12 +26,24 @@ fractional controlHistory2[3] __attribute__((section(".ybss, bss, ymemory")));
 fractional ffParams2[3] __attribute__((section(".xbss, bss, xmemory")));
 fractional ffControls2[3] __attribute__((section(".ybss, bss, ymemory")));
 
-/** controllers structures **/
+////////////////////////////////////////////////////////////////////////////////
+// Global variables.
+//
+
 tController control1;
 tController control2;
 
+////////////////////////////////////////////////////////////////////////////////
+// Module local functions declaration.
+//
+
 inline void positionControl(tController *c);
 inline void controlLoop(tController* c);
+
+////////////////////////////////////////////////////////////////////////////////
+// Timer interup service routine.
+// Execute main control algorithm.
+//
 
 void __attribute__((interrupt, no_auto_psv)) _T1Interrupt(void) {
     //-----------------------------------------------------------------------//
@@ -43,10 +59,12 @@ void __attribute__((interrupt, no_auto_psv)) _T1Interrupt(void) {
     control1.position = (long int) control1.index * 1024 + (long int) POS1CNT;
 
     controlLoop(&control1);
-    if (control1.mode != MODE_STOP)
+    if (control1.mode != MODE_STOP) {
         setPWM1(control1.posPID.controlOutput);
-    else
+    }
+    else {
         setPWM1(0);
+    }
 
     //-----------------------------------------------------------------------//
 
@@ -64,10 +82,12 @@ void __attribute__((interrupt, no_auto_psv)) _T1Interrupt(void) {
     control2.position = (long int) control2.index * 1024 + (long int) POS2CNT;
 
     controlLoop(&control2);
-    if (control2.mode != MODE_STOP)
+    if (control2.mode != MODE_STOP) {
         setPWM2(control2.posPID.controlOutput);
-    else
+    }
+    else {
         setPWM2(0);
+    }
 
     //-----------------------------------------------------------------------//
 
@@ -75,17 +95,28 @@ void __attribute__((interrupt, no_auto_psv)) _T1Interrupt(void) {
     IFS0bits.T1IF = 0; //Clear Timer1 interrupt flag
 }
 
+////////////////////////////////////////////////////////////////////////////////
+// Position control function
+//
+
 inline void positionControl(tController *c) {
     c->posPID.measuredOutput = (c->setpoint - c->position);
 
     PID(&(c->posPID)); // do pid
 
     // limit output current
-    if (c->posPID.controlOutput > 4000)
+    if (c->posPID.controlOutput > 4000) {
         c->posPID.controlOutput = 4000;
-    if (c->posPID.controlOutput<-4000)
+    }
+    if (c->posPID.controlOutput<-4000) {
         c->posPID.controlOutput = -4000;
+    }
 }
+
+////////////////////////////////////////////////////////////////////////////////
+// Control loop function.
+// Contains main control algorithm.
+//
 
 void controlLoop(tController* c) {
 
@@ -110,8 +141,9 @@ void controlLoop(tController* c) {
     }
 
     // current limit
-    if (c->current > c->current_limit)
+    if (c->current > c->current_limit) {
         c->mode = MODE_STOP;
+    }
 
     switch (c->mode) {
         case MODE_STOP:
@@ -132,27 +164,34 @@ void controlLoop(tController* c) {
             //if((rc < 0)&&(rc < -c->rc_limit))
             //	rc = -c->rc_limit;
 
-            if (c->t > c->tt)
+            if (c->t > c->tt) {
                 rc = 0;
-            else ++c->t;
+            }
+            else {
+                ++c->t;
+            }
 
             if ((c->abspos < c->l_limit)) {
                 c->status |= (1 << LOWER_LIMIT);
                 if (c->inv) {
-                    if (rc > 0)
+                    if (rc > 0) {
                         rc = 0;
+                    }
                 } else {
-                    if (rc < 0)
+                    if (rc < 0) {
                         rc = 0;
+                    }
                 }
             } else if ((c->abspos > c->u_limit)) {
                 c->status |= (1 << UPPER_LIMIT);
                 if (c->inv) {
-                    if (rc < 0)
+                    if (rc < 0) {
                         rc = 0;
+                    }
                 } else {
-                    if (rc > 0)
+                    if (rc > 0) {
                         rc = 0;
+                    }
                 }
             }
 
@@ -164,6 +203,10 @@ void controlLoop(tController* c) {
 
 }
 
+////////////////////////////////////////////////////////////////////////////////
+// Set PID regulator parameters
+//
+
 inline void setPIDParams(tController* c, int p, int i, int d) {
 
     c->kCoeffs[0] = p;
@@ -174,7 +217,11 @@ inline void setPIDParams(tController* c, int p, int i, int d) {
     PIDCoeffCalc(&(c->kCoeffs[0]), &c->posPID); /*Derive the a,b, & c coefficients from the Kp, Ki & Kd */
 }
 
-inline void initControl() {
+////////////////////////////////////////////////////////////////////////////////
+// Initialize control algorithm.
+//
+
+inline void initControl(void) {
     /* Initialize controller 1 */
 
     // setup position PID

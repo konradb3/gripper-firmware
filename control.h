@@ -16,16 +16,16 @@
 
 void initControl();
 
-int getSpead1();
-int getSpead2();
+int getSpead1(void);
+int getSpead2(void);
 void setSpead1(int spead);
 void setSpead2(int spaed);
 void setMode1(char mod);
 void setMode2(char mode);
-char getMode1();
-char getMode2();
-char getStatus1();
-char getStatus2();
+char getMode1(void);
+char getMode2(void);
+char getStatus1(void);
+char getStatus2(void);
 
 typedef struct {
     //** Regulator data **//

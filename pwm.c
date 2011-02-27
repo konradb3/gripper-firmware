@@ -7,7 +7,7 @@
 // PWM hardware initialization
 //
 
-void initPWM() {
+void initPWM(void) {
     /* PWM time base operates in a Free Running mode */
     P1TCONbits.PTMOD = 0b00;
     /* PWM time base input clock period is TCY (1:1 prescale) */

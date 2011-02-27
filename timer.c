@@ -4,7 +4,7 @@
 
 #define PERIOD (FCY/(UPDATE_RATE*8))-1
 
-void initTIMER() {
+void initTIMER(void) {
     T1CONbits.TON = 0; // Disable Timer
     T1CONbits.TCS = 0; // Select external clock source
     T1CONbits.TSYNC = 0; // Enable Synchronization

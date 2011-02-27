@@ -14,7 +14,6 @@
 #define CUR2_PID_KI	0.0
 #define CUR2_PID_KD	0.0
 
-
 #define SERVO0_ID 2
 #define SERVO1_ID 3
 
