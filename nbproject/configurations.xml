@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="62">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>adc.h</itemPath>
+      <itemPath>config.h</itemPath>
+      <itemPath>control.h</itemPath>
+      <itemPath>pwm.h</itemPath>
+      <itemPath>qei.h</itemPath>
+      <itemPath>serial.h</itemPath>
+      <itemPath>timer.h</itemPath>
+      <itemPath>uart.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="LibraryFiles"
+                   displayName="Library Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="LinkerScript"
+                   displayName="Linker Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="ObjectFiles"
+                   displayName="Object Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>abs_enc.c</itemPath>
+      <itemPath>adc.c</itemPath>
+      <itemPath>control.c</itemPath>
+      <itemPath>crc.c</itemPath>
+      <itemPath>main.c</itemPath>
+      <itemPath>pwm.c</itemPath>
+      <itemPath>qei.c</itemPath>
+      <itemPath>serial.c</itemPath>
+      <itemPath>timer.c</itemPath>
+      <itemPath>uart.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="default" type="2">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <targetDevice>dsPIC33FJ64MC202</targetDevice>
+        <targetHeader></targetHeader>
+        <platformTool>ICD2PlatformTool</platformTool>
+        <languageToolchain>C30</languageToolchain>
+        <compilerSet>C30</compilerSet>
+        <platform>2</platform>
+      </toolsSet>
+      <compileType>
+        <linkerTool>
+          <linkerLibItems>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <C30>
+        <property key="scalar-model" value="default"/>
+        <property key="extra-include-directories" value=""/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="data-model" value="default"/>
+        <property key="enable-all-warnings" value="false"/>
+        <property key="pre-instruction-scheduling" value="default"/>
+        <property key="enable-short-double" value="true"/>
+        <property key="enable-procedural-abstraction" value="false"/>
+        <property key="optimization-level" value="0"/>
+        <property key="enable-ansi-warnings" value="false"/>
+        <property key="enable-fatal-warnings" value="false"/>
+        <property key="post-instruction-scheduling" value="default"/>
+        <property key="enable-omit-frame-pointer" value="false"/>
+        <property key="enable-ansi-std" value="false"/>
+        <property key="enable-unroll-loops" value="false"/>
+        <property key="const-model" value="default"/>
+        <property key="code-model" value="default"/>
+      </C30>
+      <C30-AS>
+        <property key="omit-debug-dirs" value="false"/>
+        <property key="extra-include-directories-for-assembler" value=""/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="list-file" value=""/>
+        <property key="list-assembly" value="false"/>
+        <property key="list-source" value="false"/>
+        <property key="relax" value="false"/>
+        <property key="extra-include-directories-for-preprocessor" value=""/>
+        <property key="warning-level" value="emit-warnings"/>
+        <property key="list-section-info" value="false"/>
+        <property key="omit-forms" value="false"/>
+        <property key="list-symbols" value="false"/>
+        <property key="keep-locals" value="false"/>
+        <property key="false-conditionals" value="false"/>
+        <property key="expand-macros" value="false"/>
+        <property key="assembler-symbols" value=""/>
+      </C30-AS>
+      <C30-LD>
+        <property key="preprocessor-macros" value=""/>
+        <property key="general-code-protect" value="no_code_protect"/>
+        <property key="secure-write-protect" value="no_write_protect"/>
+        <property key="warn-section-align" value="false"/>
+        <property key="heap-size" value=""/>
+        <property key="stack-size" value=""/>
+        <property key="linker-symbols" value=""/>
+        <property key="trace-symbols" value=""/>
+        <property key="map-file" value=""/>
+        <property key="enable-pack-data" value="true"/>
+        <property key="boot-eeprom" value="no_eeprom"/>
+        <property key="general-write-protect" value="no_write_protect"/>
+        <property key="enable-handles" value="true"/>
+        <property key="enable-data-init" value="true"/>
+        <property key="secure-flash" value="no_flash"/>
+        <property key="boot-write-protect" value="no_write_protect"/>
+        <property key="boot-flash" value="no_flash"/>
+        <property key="report-memory-usage" value="false"/>
+        <property key="generate-cross-reference-file" value="false"/>
+        <property key="input-libraries" value="dsp"/>
+        <property key="secure-ram" value="no_ram"/>
+        <property key="enable-check-sections" value="true"/>
+        <property key="enable-default-isr" value="true"/>
+        <property key="symbol-stripping" value="keep-all"/>
+        <property key="boot-ram" value="no_ram"/>
+        <property key="secure-eeprom" value="no_eeprom"/>
+        <property key="extra-lib-directories" value=""/>
+      </C30-LD>
+      <ICD2PlatformTool>
+        <property key="program.programmemory.range.start" value="0x0"/>
+        <property key="program.useridmemory" value="true"/>
+        <property key="UART 2" value="true"/>
+        <property key="UART 1" value="true"/>
+        <property key="program.preserveeedata" value="false"/>
+        <property key="program.preserveprogram.range.start" value="0x0"/>
+        <property key="DUAL COMPARATOR" value="true"/>
+        <property key="INPUT CAPTURE 8" value="true"/>
+        <property key="INPUT CAPTURE 7" value="true"/>
+        <property key="INPUT CAPTURE 2" value="true"/>
+        <property key="program.configmemory" value="true"/>
+        <property key="INPUT CAPTURE 1" value="true"/>
+        <property key="program.preserveprogram.range.end" value="0xabff"/>
+        <property key="ADC 1" value="true"/>
+        <property key="OUTPUT COMPARE 8" value="true"/>
+        <property key="REAL TIME CLOCK AND CALENDAR" value="true"/>
+        <property key="OUTPUT COMPARE 3" value="true"/>
+        <property key="PARALLEL MASTER/SLAVE PORT" value="true"/>
+        <property key="OUTPUT COMPARE 2" value="true"/>
+        <property key="OUTPUT COMPARE 1" value="true"/>
+        <property key="firmware.autodownload" value="true"/>
+        <property key="program.erasebeforeprogram" value="true"/>
+        <property key="program.programmemory" value="full"/>
+        <property key="TIMER5" value="true"/>
+        <property key="program.preserveprogram" value="skip"/>
+        <property key="program.autoselect" value="auto"/>
+        <property key="TIMER4" value="true"/>
+        <property key="TIMER3" value="true"/>
+        <property key="SPI 2" value="true"/>
+        <property key="TIMER2" value="true"/>
+        <property key="program.eedatamemory" value="true"/>
+        <property key="SPI 1" value="true"/>
+        <property key="TIMER1" value="true"/>
+        <property key="CRC" value="true"/>
+        <property key="I2C1" value="true"/>
+        <property key="program.programmemory.range.end" value="0xabff"/>
+        <property key="power.powerfromICD" value="false"/>
+        <property key="Freeze All Other Peripherals" value="true"/>
+      </ICD2PlatformTool>
+    </conf>
+  </confs>
+</configurationDescriptor>
